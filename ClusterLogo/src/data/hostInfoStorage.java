@@ -2,6 +2,7 @@ package data;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Stores data viewed with the hostGui
@@ -9,9 +10,9 @@ import java.util.LinkedList;
  * @author Todd Bodnar
  */
 public class hostInfoStorage {
-    private LinkedList<runConfig> todo;
-    private LinkedList<runConfig> inProgress;
-    private LinkedList<runConfig> completed;
+    private ConcurrentLinkedQueue<runConfig> todo;
+    private ConcurrentLinkedQueue<runConfig> inProgress;
+    private ConcurrentLinkedQueue<runConfig> completed;
     private int totalAssignments;
     private int totalAssigned;
     private int totalCompleted;
@@ -21,9 +22,9 @@ public class hostInfoStorage {
      */
     public hostInfoStorage()
     {
-        todo = new LinkedList<runConfig>();
-        inProgress = new LinkedList<runConfig>();
-        completed = new LinkedList<runConfig>();
+        todo = new ConcurrentLinkedQueue<runConfig>();
+        inProgress = new ConcurrentLinkedQueue<runConfig>();
+        completed = new ConcurrentLinkedQueue<runConfig>();
 
         totalAssignments = 0;
         totalAssigned = 0;
@@ -70,7 +71,7 @@ public class hostInfoStorage {
      */
     public synchronized runConfig getProject()
     {
-        return todo.getFirst();
+        return todo.peek();
     }
 
     /**

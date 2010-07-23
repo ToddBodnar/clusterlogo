@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipInputStream;
@@ -30,8 +30,8 @@ public class decompressThread implements Runnable{
      */
     public decompressThread(hostGui hostGUI)
     {
-        files = new LinkedList<File>();
-        configs = new LinkedList<runConfig>();
+        files = new ConcurrentLinkedQueue<File>();
+        configs = new ConcurrentLinkedQueue<runConfig>();
         gui = hostGUI;
     }
 
@@ -60,8 +60,8 @@ public class decompressThread implements Runnable{
                 }
             }
             gui.setDecompressMessage("Decompression in Progress");
-            File current = files.pop();
-            runConfig info = configs.pop();
+            File current = files.poll();
+            runConfig info = configs.poll();
             try {
                 ZipInputStream zin = new ZipInputStream(new BufferedInputStream(new FileInputStream(current.toString())));
                 if(zin.getNextEntry()!=null)
@@ -83,7 +83,7 @@ public class decompressThread implements Runnable{
             }
         }
     }
-    private LinkedList<File> files;
-    private LinkedList<runConfig> configs;
+    private ConcurrentLinkedQueue<File> files;
+    private ConcurrentLinkedQueue<runConfig> configs;
     private hostGui gui;
 }
