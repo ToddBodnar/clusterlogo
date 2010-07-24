@@ -103,6 +103,8 @@ public class clientThread implements Runnable{
 
                 threadGui.getCurrentBar().setValue(100);
 
+                app.dispose();
+
                 threadGui.setMessageText("Compressing Data");
                 // base on http://java.sun.com/developer/technicalArticles/Programming/compression/
                 File dataFileTmp = new File(workingFolder.toString()+File.separatorChar+"data.dat");
@@ -175,6 +177,10 @@ public class clientThread implements Runnable{
                 } catch (LogoException ex) {
                     Logger.getLogger(clientThread.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            catch(InterruptedException ex)
+            {
+                Logger.getLogger(clientThread.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
         if(runnerGui.noMoreBoxChecked())
