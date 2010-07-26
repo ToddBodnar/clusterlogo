@@ -42,13 +42,25 @@ public class fileTransfer {
 
         progressBar.setString(length+"");
 
-        for(long ct=0;ct<length;ct++)
-        {
-            out.write(inStream.readByte());
+        byte buffer[] = new byte[BUFFER_LENGTH];
 
-            if(ct%(length/100+1)==0)
+        long ct=0;
+
+        while(true)
+        {
+            int result = inStream.read(buffer);
+            
+            if(result<0)
+                break;
+
+            out.write(buffer, 0, result);
+           
+            ct+=result;
+
+          //  if(ct%(length/100+1)==0)
                 progressBar.setValue((int) (100 * ct / length));
         }
+        out.flush();
 
         progressBar.setValue(100);
         progressBar.setString("");
@@ -77,12 +89,20 @@ public class fileTransfer {
 
         outStream.writeLong(length);
 
-        for (long ct = 0; ct < length; ct++) {
-            int inputs = in.read();
+        byte buffer[] = new byte[BUFFER_LENGTH];
+        int result = 2;
+        long ct=0;
 
-            outStream.writeByte(inputs);
+        while(result>0)
+        {
+            result = in.read(buffer);
 
-            if(ct%(length/100+1)==0)
+            if(result>0)
+                ct+=result;
+
+            outStream.write(buffer);
+
+         //  if(ct%(length/100+1)==0)
                 progressBar.setValue((int) (100 * ct / length));
         }
         outStream.flush();
@@ -91,4 +111,6 @@ public class fileTransfer {
 
         in.close();
     }
+
+    public static final int BUFFER_LENGTH = 1024;
 }
