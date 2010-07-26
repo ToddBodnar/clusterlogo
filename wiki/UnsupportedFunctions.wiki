@@ -1,0 +1,1 @@
+#summary Discuss limitations of NetLogo in headless mode
