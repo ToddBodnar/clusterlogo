@@ -69,12 +69,26 @@ public class decompressThread implements Runnable{
                     byte buffer[] = new byte[1024];
                     int count;
                     System.out.println(info.getFileName());
+                    File f = new File(info.getFileName());
+
+                    long length = 0;
+                    if(f.exists())//if the file already exists
+                        length = f.length();//record its size, as to not double count it
+
                     BufferedOutputStream zout = new BufferedOutputStream(new FileOutputStream(info.getFileName(),true),1024);
                     while ((count = zin.read(buffer, 0, 1024)) != -1) {
                          zout.write(buffer, 0, count);
                     }
                     zout.flush();
                     zout.close();
+
+                    if(f.exists())
+                    {
+                        gui.updateDataGenerated(f.length()-length);
+                        gui.updateGoPress(info.getLength());
+                        gui.updateAverageCompletionTime(info.timeSinceStart());
+                        gui.updateProjectsPerHour();
+                    }
                 }
                 zin.close();
                 current.delete();

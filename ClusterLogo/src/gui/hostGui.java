@@ -32,6 +32,11 @@ public class hostGui extends javax.swing.JFrame {
 
     /** Creates new form hostGui */
     public hostGui() {
+        startTime = System.currentTimeMillis();
+        timedOut = 0;
+        goPressCt = 0;
+        totalTime = 0;
+        totalData = 0;
 
         initComponents();
     }
@@ -71,6 +76,20 @@ public class hostGui extends javax.swing.JFrame {
         addProjectsButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         decompressText = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        timeOutTextField = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        timeOutCount = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        goPressPerSec = new javax.swing.JLabel();
+        avgCompletionTime = new javax.swing.JLabel();
+        projectsPerHour = new javax.swing.JLabel();
+        dataGenerated = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +150,30 @@ public class hostGui extends javax.swing.JFrame {
 
         decompressText.setText(" ");
 
+        jLabel13.setText("Time Out (hours)");
+
+        timeOutTextField.setText("24");
+
+        jLabel14.setText("Projects Timed Out");
+
+        timeOutCount.setText("0");
+
+        jLabel16.setText("\"Go\" Presses / Second");
+
+        jLabel17.setText("Average Completion Time");
+
+        jLabel18.setText("Projects / Hour");
+
+        jLabel19.setText("Data Generated");
+
+        goPressPerSec.setText("0");
+
+        avgCompletionTime.setText("0");
+
+        projectsPerHour.setText("0");
+
+        dataGenerated.setText("0 Bytes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,6 +181,7 @@ public class hostGui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
@@ -177,7 +221,32 @@ public class hostGui extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(addProjectsButton)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                        .addComponent(goPressPerSec))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                        .addComponent(avgCompletionTime))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
+                        .addComponent(projectsPerHour))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                        .addComponent(dataGenerated))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(timeOutCount)
+                            .addComponent(timeOutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -214,6 +283,34 @@ public class hostGui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(timeOutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timeOutCount)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(goPressPerSec))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(avgCompletionTime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(projectsPerHour))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(dataGenerated))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -230,7 +327,7 @@ public class hostGui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addProjectsButton)
                     .addComponent(jLabel12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -263,6 +360,11 @@ public class hostGui extends javax.swing.JFrame {
     public void setDataStorage(hostInfoStorage storage)
     {
         this.storage = storage;
+    }
+
+    public float getTimeOutRate()
+    {
+        return Float.parseFloat(timeOutTextField.getText());
     }
 
     public void setDecompressMessage(String txt)
@@ -303,22 +405,116 @@ public class hostGui extends javax.swing.JFrame {
         return downloadProgress;
     }
 
+    /**
+     * Updates goPressPerSecond
+     * @param goes The number of aditional "go" presses
+     */
+    public void updateGoPress(long goes)
+    {
+        goPressCt+=goes;
+        long time = (System.currentTimeMillis()-startTime)/1000;
+        goPressPerSec.setText(""+1.0f*goPressCt/time);
+    }
+
+    /**
+     * Updates the averageCompletionTime label
+     * @param newElement the number of milliseconds it took to complete an assignment
+     */
+    public void updateAverageCompletionTime(long newElement)
+    {
+        totalTime += newElement;
+        double time = totalTime/1000/storage.getCompleted();
+        String label = " seconds";
+        if(time>60)
+        {
+            label = " minutes";
+            time/=60;
+        }
+        if(time>60)
+        {
+            label = " hours";
+            time/=60;
+        }
+        if(time>24)
+        {
+            label = " days";
+            time/=24;
+        }
+        avgCompletionTime.setText(time+label);
+    }
+
+    /**
+     * Updates the projectsPerHour label
+     */
+    public void updateProjectsPerHour()
+    {
+        projectsPerHour.setText(""+(storage.getCompleted())/((1.0*System.currentTimeMillis()-startTime)/1000/60/60));
+    }
+
+    public void incrementTimeOutCt()
+    {
+        timedOut++;
+        timeOutCount.setText(""+timedOut);
+    }
+
+    /**
+     * Updates the dataGenerated label
+     * @param newDataLength the length, in bytes, of a result
+     */
+    public void updateDataGenerated(long newDataLength)
+    {
+        totalData += newDataLength;
+        double temp = totalData;
+        String label = " bytes";
+        if(temp>1024)
+        {
+            label = " kilobytes";
+            temp/=1024;
+        }
+        if(temp>1024)
+        {
+            label = " megabytes";
+            temp/=1024;
+        }
+        if(temp>1024)
+        {
+            label = " gigabytes";
+            temp/=1024;
+        }
+        if(temp>1024)
+        {
+            label = " terabytes";
+            temp/=1024;
+        }
+        dataGenerated.setText(temp+label);
+    }
+
     private hostInfoStorage storage;
+    private long startTime, goPressCt, totalTime, totalData, timedOut;
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProjectsButton;
     private javax.swing.JProgressBar assignmentProgress;
+    private javax.swing.JLabel avgCompletionTime;
     private javax.swing.JTextArea completedList;
+    private javax.swing.JLabel dataGenerated;
     private javax.swing.JLabel decompressText;
     private javax.swing.JProgressBar downloadProgress;
     private javax.swing.JProgressBar finishedProgress;
+    private javax.swing.JLabel goPressPerSec;
     private javax.swing.JTextArea inProgressList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -332,6 +528,11 @@ public class hostGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel projectsPerHour;
+    private javax.swing.JLabel timeOutCount;
+    private javax.swing.JTextField timeOutTextField;
     private javax.swing.JTextArea toDoList;
     private javax.swing.JProgressBar uploadProgress;
     // End of variables declaration//GEN-END:variables

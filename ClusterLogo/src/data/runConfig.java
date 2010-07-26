@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package data;
 
 import java.io.File;
@@ -14,7 +9,6 @@ import java.util.Vector;
  * Sent from the server to the client to tell it how to set up netlogo
  *
  * @author Todd Bodnar
- * @version 0.2
  */
 public class runConfig implements Serializable {
 
@@ -38,6 +32,11 @@ public class runConfig implements Serializable {
      */
     private File nLogo;
 
+    /**
+     * The time when this was assigned
+     */
+    private long startTime;
+
 
     public String toString()
     {
@@ -47,6 +46,33 @@ public class runConfig implements Serializable {
         output += "For " + length + " runs using "+nLogo.toString();
 
         return output;
+    }
+
+    /**
+     * Sets startTime to the current time
+     */
+    public void setStarted()
+    {
+        startTime = System.currentTimeMillis();
+    }
+
+    /**
+     * Determines how long, in milliseconds, it has been since this was started
+     * @return The time since this started
+     */
+    public long timeSinceStart()
+    {
+        return System.currentTimeMillis() - startTime;
+    }
+
+    /**
+     * Reports if the task has been timed out
+     * @param hours the hours before an element times out
+     * @return true if this is timed out, false otherwise
+     */
+    public boolean isTimedOut(float hours)
+    {
+        return hours*60*60*1000 <= timeSinceStart();
     }
 
     /**
