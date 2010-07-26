@@ -1,33 +1,32 @@
 #summary A list of all other pages in this wiki
 
 = Introduction =
-  * What is Cluster Logo?
-  * How does Cluster Logo Work?
-  * What can be done with Cluster Logo?
+  * ==== What is Cluster Logo? ====
+  * ==== How does Cluster Logo Work? ====
+  * ==== What can be done with Cluster Logo? ====
 
 = Tutorials =
 
-  # Fibonacci Generation
-  # Extending an Existing Model
-  # Multiple File Output
+  # ==== Fibonacci Generation ====
+  # ==== Extending an Existing Model ====
+  # ==== Multiple File Output ====
 
 = Programming Guide =
 
-  * Making Compatible Programs
-  * Unsupported Functions
+  * ==== Making Compatible Programs ====
+  * ==== Unsupported Functions ====
 
 = Running an Experiment =
 
-  * Server Set Up
-  * Client Set Up
+  * ==== Server Set Up ====
+  * ==== Client Set Up ====
 
 = Versions =
 
-  * How Numbering Works
-  * Change Log
+  * ==== How Numbering Works ====
+  * ==== Change Log ====
 
 = Licenses =
 
-  * Program License
-  * 3rd Party Licenses
-
+  * ==== Program License ====
+  * ==== 3rd Party Licenses ====
