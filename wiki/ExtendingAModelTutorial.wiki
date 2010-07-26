@@ -1,0 +1,1 @@
+#summary Taking an existing model from NetLogo, and adapt it to be compatable
