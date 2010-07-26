@@ -1,7 +1,6 @@
 package data;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -42,6 +41,18 @@ public class hostInfoStorage {
     }
 
     /**
+     * Removes a project from inProgress and puts it back into the todo list.
+     * This is used for projects that it is assumed will not be completed by the currently assigned client
+     * @param project The timed out project
+     */
+    public synchronized void timeOut(runConfig project)
+    {
+        todo.add(project);
+        inProgress.remove(project);
+        totalAssigned--;
+    }
+
+    /**
      * Removes a runConfig from the todo list and adds it to the inProgress list
      * Nothing is removed if project is not in the todo list, but it will still be added to the inProgress list
      * @param project the runConfig to move
@@ -72,6 +83,11 @@ public class hostInfoStorage {
     public synchronized runConfig getProject()
     {
         return todo.peek();
+    }
+
+    public runConfig getAssignedProject()
+    {
+        return inProgress.peek();
     }
 
     /**

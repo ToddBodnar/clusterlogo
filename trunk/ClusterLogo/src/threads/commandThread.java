@@ -38,16 +38,31 @@ public class commandThread implements Runnable{
     public void run() {
         while(true)//keep repeating the process until the program is terminated
         {
+            while(storage.getInProgressSize()>0 && storage.getAssignedProject().isTimedOut(myGui.getTimeOutRate()))
+                {
+                    storage.timeOut(storage.getAssignedProject());
+                    myGui.incrementTimeOutCt();
+                    myGui.updateView();
+                }
             while(storage.getTodoSize()==0) //while there are no more projects to send
             {
                 try {
                     Thread.sleep(10000);  //wait 10 seconds to see if new ones are added
                 } catch (InterruptedException ex) {
                 }
+                while(storage.getInProgressSize()>0 && storage.getAssignedProject().isTimedOut(myGui.getTimeOutRate()))
+                {
+                    storage.timeOut(storage.getAssignedProject());
+                   myGui.incrementTimeOutCt();
+                    myGui.updateView();
+                }
             }
             try {
                 Socket connection = server.accept();//Get a connection
                 runConfig assignment = storage.getProject();//Get a project
+
+                assignment.setStarted();
+
                 ObjectOutputStream out = new ObjectOutputStream(connection.getOutputStream());
                 out.writeObject(assignment);//Send the project
                 tools.fileTransfer.sendFile(assignment.getNLogo(), out, myGui.getUploadBar());//send the nLogo file
