@@ -1,4 +1,5 @@
 #summary Examples of good/bad projects for Cluster Logo
+<wiki:toc max_depth="2" />
 =The Good=
 ==Large Projects==
 Cluster Logo is designed for large experiments that will benefit from being able to use several computers for the project. Before Cluster Logo, a large scale experiment would be preformed by installing NetLogo on several computers, copying the .nLogo code to each of them, setting up a behavior space on each computer, letting them run for a few weeks, and finally copying the resultant data onto a single computer for interpretation. While this does work, it is intensive work for more than a few computers and has the capability for problems to occur at several points.
@@ -17,3 +18,30 @@ Imagine a teacher's assignment for a lab: "Write a NetLogo program to simulate t
 Why would this be? Lets assume that the students are all on a gradient from speed coders -people who can get their projects coded and tested with in a few minutes- to slackers -people who will get their projects coded and tested no sooner than ten minutes before class-. Because the students would never use their computers to its maximum potential except for when simulations are being run, there is a lot of free processor time available. Students who are ready to run their simulations could use this free time to expedite their simulations. They would just give their code to the TA running the server, and the results would be directed to their personal space. Unless everyone turns in their projects at the same time, they would get their results back faster. If, unlikely as it would be be, everyone would turn in their projects at the some time, the simulation times will be comparable to if they had just used NetLogo!
 
 This wouldn't need to only apply to students. If there is a group out there that is developing several NetLogo simulations in parallel, they could use Cluster Logo to automate however many computers they have to run simulations. A future version of Cluster Logo could include a way to democratically divide up the time given to experiments instead of its current First-In, First-Out strategy. Again, like the student example, the results could be sent to different folders or drives for different users.
+
+=The Bad=
+
+==Unsupported Code==
+There are several things that NetLogo can run that Cluster Log cannot. For example, because the Clients are separated from any user interaction, any program that requires user input will not be able to run. Also, images cannot be rendered. See [http://code.google.com/p/clusterlogo/wiki/UnsupportedFunctions Unsupported Functions].
+
+==Small Experiments==
+Because Cluster Logo has to transfer both the .nLogo file and the data each time an assignment is run, very small assignments may not be worth the transfer times. For example the [http://code.google.com/p/clusterlogo/wiki/FibonachiGenerationTutorial Fibonacci Generator] is inefficient for small numbers.
+
+==One Very Large Assignment==
+Because of the way Cluster Logo works, it is not any better than NetLogo for experiments that only have one assignment. For example, if a study was developed to see if a swarm of thousands of turtles will eventually form an ordered pattern, Cluster Logo could not speed it up. However if the study tested several different turtle configurations, then Cluster Logo would be useful.
+
+=The Ugly=
+
+==Server Security==
+Cluster Logo should not be considered secure in any form. It is possible for a rogue program to gain a copy of the .nLogo file. This is not considered a huge problem as most .nLogo files are eventually posted on NetLogo's [http://ccl.northwestern.edu/netlogo/models/community/index.cgi Community Model Page].
+
+Further more, it would be possible for a rogue program to request assignments en masse with out any intention of completing them. The server would eventually consider the assignments timed out and reset them, but the rogue could still be waiting to grab any new assignments. 
+
+Both of these attacks would require knowledge of the server's IP address (fairly easy to obtain) and motivation (possible, but as mentioned before, the stolen .nLogo files should be freely available anyway, and the second attack would require waiting hours for everything to time out.).
+
+More security features will be added if it becomes necessary.
+
+==Client Security==
+If someone takes control of the server (which would require breaking into the room where it is stored) that person could inject a new .nLogo file that would delete everything on the client's computer (not sure if this is possible, either NetLogo or Java may take exception to editing files outside of the running folder). 
+
+While this is a possible attack, it seems like it would not be worth breaking into the lab where the server is running just to delete some files when it would be just as easy to steal all of the computers. Furthermore, if a student in a lab (discussed above, in Many Small Projects) were to try a stunt like this, it would be trivial to read through all of the student's submitted programs to find the offending code.
