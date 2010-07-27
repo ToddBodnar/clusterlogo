@@ -10,7 +10,7 @@ f(x) =
 
 This algorithm runs at O(n!) which is extremely slow for large numbers ( roughly n > 20 ). While this would be unwanted for an actual program, it is fine for our purposes because it allows long execution times, like that of actual programs. 
 
-The complete code is posted below. We also added a go and setup button for testing purposes, but they are not needed as long as setup and go routines are developed. The program outputs the results to data.dat, as explained in [http://code.google.com/p/clusterlogo/wiki/MakingCompatablePrograms Making Compatible Programs].
+The complete code is posted below. We also added a go and setup button for testing purposes, but they are not needed as long as setup and go routines are developed. The program outputs the results to data.dat, as explained in [http://code.google.com/p/clusterlogo/wiki/MakingCompatiblePrograms Making Compatible Programs].
 
 {{{
 to setup
