@@ -1,0 +1,14 @@
+#summary A quick list of the most current versions of the program.
+
+
+||Client Stable|| 0.4.1 ||
+||Server Stable|| 0.4.1 ||
+||Client Untested|| 0.5.0 ||
+||Server Untested|| 0.5.0 ||
+
+
+Stable releases can be found in the [http://code.google.com/p/clusterlogo/downloads/list Download Tab].
+
+Untested releases can only be found in the [http://code.google.com/p/clusterlogo/source/checkout Source Code Tab]. It will have to be built by the user. Using untested releases allows the user to access new features before they are generally available, but the programs may be more unstable.
+
+Users can request new features or report bugs under the [http://code.google.com/p/clusterlogo/issues/entry Issues Tab].
