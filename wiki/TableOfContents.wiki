@@ -24,6 +24,7 @@
 = Versions =
 
   * [http://code.google.com/p/clusterlogo/wiki/HowNumberingWorks How Numbering Works]
+  * [http://code.google.com/p/clusterlogo/wiki/MostRecentVersion The Most Recent Versions]
   * [http://code.google.com/p/clusterlogo/wiki/ChangeLog Change Log]
 
 = Licenses =
