@@ -1,1 +1,0 @@
-#summary List of required elements in a NetLogo program
