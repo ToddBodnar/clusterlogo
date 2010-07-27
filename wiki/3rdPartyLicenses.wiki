@@ -1,0 +1,1 @@
+#summary Licenses for programs that Cluster Logo extends
