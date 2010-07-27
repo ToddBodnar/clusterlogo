@@ -36,10 +36,6 @@ Currently Here
       * Assignments can time out if the client does not report them fast enough (time out rates are large enough to assume something happened to the client) and returns them to the To Do list.
       * Various statistics are available in Host's gui.
       * Rare client memory leak fixed
-
-  ==0.6.X==
-
-    ===0.6.0===
       * Server's list of assignments now saved to disk
       * Server's list of assignments now editable
       * Client stops running if too many unusable assignments are given to it (assume something is wrong with Client).
