@@ -2,6 +2,8 @@ package data;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 /**
@@ -30,7 +32,7 @@ public class runConfig implements Serializable {
     /**
      * File of the nLogo project to run the experiment on
      */
-    private File nLogo;
+    private String nLogo;
 
     /**
      * The time when this was assigned
@@ -40,12 +42,33 @@ public class runConfig implements Serializable {
 
     public String toString()
     {
-        String output = fileName + " ";
+        String output = fileName + ";";
         for(int ct=0;ct<setCommands.size();ct++)
             output+= setCommands.get(ct)+" ";
-        output += "For " + length + " runs using "+nLogo.toString();
+        output += ";For;" + length + ";runs using;"+nLogo;
 
         return output;
+    }
+
+    public runConfig(String input) throws Exception
+    {
+        StringTokenizer mainParts = new StringTokenizer(input, ";");
+        fileName = mainParts.nextToken();
+        StringTokenizer commands = new StringTokenizer(mainParts.nextToken(), " ");
+        setCommands = new Vector<String>();
+
+        while (commands.hasMoreElements()) {
+            
+            setCommands.add(commands.nextToken() + " " + commands.nextToken());
+        }
+
+        mainParts.nextToken();
+
+        length = Long.parseLong(mainParts.nextToken());
+
+        mainParts.nextToken();
+
+        nLogo = mainParts.nextToken();
     }
 
     /**
@@ -83,7 +106,7 @@ public class runConfig implements Serializable {
      */
     public runConfig(File nLogo, String resultFile, long ticks, Vector<String> commands)
     {
-        this.nLogo = nLogo;
+        this.nLogo = nLogo.toString();
         fileName = resultFile;
         length = ticks;
         setCommands = commands;
@@ -122,7 +145,7 @@ public class runConfig implements Serializable {
      */
     public File getNLogo()
     {
-        return nLogo;
+        return new File(nLogo);
     }
 
     /**

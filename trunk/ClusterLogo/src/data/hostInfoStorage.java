@@ -40,6 +40,22 @@ public class hostInfoStorage {
         totalAssignments++;
     }
 
+    public void removeAll()
+    {
+        todo = new ConcurrentLinkedQueue<runConfig>();
+        inProgress = new ConcurrentLinkedQueue<runConfig>();
+        completed = new ConcurrentLinkedQueue<runConfig>();
+
+        totalAssignments = 0;
+        totalAssigned = 0;
+        totalCompleted = 0;
+    }
+
+    public void remove(runConfig item)
+    {
+        todo.remove(item);
+    }
+
     /**
      * Removes a project from inProgress and puts it back into the todo list.
      * This is used for projects that it is assumed will not be completed by the currently assigned client

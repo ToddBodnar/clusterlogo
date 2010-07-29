@@ -10,6 +10,6 @@ package tools;
  * @author Todd Bodnar
  */
 public class version {
-    public static String CLIENT_VERSION = "0.4.1";
-    public static String SERVER_VERSION = "0.4";
+    public static String CLIENT_VERSION = "0.5.0";
+    public static String SERVER_VERSION = "0.5.0 Alpha";
 }
