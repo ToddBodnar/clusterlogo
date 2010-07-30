@@ -1,8 +1,8 @@
 #summary A quick list of the most current versions of the program.
 
 
-||Client Stable|| 0.4.1 ||
-||Server Stable|| 0.4.1 ||
+||Client Stable|| 0.5.0 ||
+||Server Stable|| 0.5.0 ||
 ||Client Untested|| 0.5.0 ||
 ||Server Untested|| 0.5.0 ||
 
