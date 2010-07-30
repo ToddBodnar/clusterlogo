@@ -11,5 +11,5 @@ package tools;
  */
 public class version {
     public static String CLIENT_VERSION = "0.5.0";
-    public static String SERVER_VERSION = "0.5.0 Alpha";
+    public static String SERVER_VERSION = "0.5.0";
 }
