@@ -54,7 +54,7 @@ public class hostInfoStorage {
     public void remove(runConfig item)
     {
         todo.remove(item);
-        totalAssigned--;
+        totalAssignments--;
     }
 
     /**
