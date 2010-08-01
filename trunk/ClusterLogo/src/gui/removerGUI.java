@@ -88,7 +88,7 @@ public class removerGUI extends javax.swing.JFrame {
         int selected[] = list.getSelectedIndices();
         for(int ct=0;ct<selected.length;ct++)
         {
-            data.remove((runConfig) list.getModel().getElementAt(ct));
+            data.remove((runConfig) list.getModel().getElementAt(selected[ct]));
         }
         refreshList();
     }//GEN-LAST:event_deleteButtonActionPerformed
