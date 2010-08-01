@@ -54,6 +54,7 @@ public class runConfig implements Serializable {
     {
         StringTokenizer mainParts = new StringTokenizer(input, ";");
         fileName = mainParts.nextToken();
+        System.out.print(fileName+"\t");
         StringTokenizer commands = new StringTokenizer(mainParts.nextToken(), " ");
         setCommands = new Vector<String>();
 
@@ -69,6 +70,7 @@ public class runConfig implements Serializable {
         mainParts.nextToken();
 
         nLogo = mainParts.nextToken();
+        System.out.println(nLogo);
     }
 
     /**
