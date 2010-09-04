@@ -1,1 +1,12 @@
 #summary List of required elements in a NetLogo program
+
+A NetLogo program requires three modifications to make it run correctly on Cluster Logo.
+
+===go button===
+A go button or command is required and will be pressed a specified number of times. (Specified by the server when the experiment is being set up.). It does not matter if the "forever" check box is selected or not in the button's properties in NetLogo. A "go" button is fairly common in NetLogo programs, so it will not be elaborated more in this.
+
+===setup button===
+The setup button is pressed exactly once per simulation. It is pressed after any variables are set and before the go button is pressed. This button is also fairly common in NetLogo programs.
+
+==="data.dat output"===
+Any data from the simulation should be stored in a file called "data.dat". This file will be uploaded back to the server once the simulation is completed. By default, these files will be merged together by the server.
