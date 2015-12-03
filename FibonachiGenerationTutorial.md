@@ -1,0 +1,36 @@
+This tutorial assumes previous knowledge of using NetLogo. Please view the [NetLogo User Manual](http://ccl.northwestern.edu/netlogo/docs/NetLogo%20User%20Manual.pdf) if you are not familiar with NetLogo.
+
+In this tutorial, we are going to develop a simple NetLogo program and configure Cluster Logo to run the experiment on several computers. Our program will get a number, n, from the user via an input box, and calculate the nth Fibonacci number. The number will be calculated by the recursive formula:
+
+f(x) =
+| 1 | x < 2|
+|:--|:-----|
+| f(x-1) + f(x-2) | otherwise |
+
+This algorithm runs at O(n!) which is extremely slow for large numbers ( roughly n > 20 ). While this would be unwanted for an actual program, it is fine for our purposes because it allows long execution times, like that of actual programs.
+
+The complete code is posted below. We also added a go and setup button for testing purposes, but they are not needed as long as setup and go routines are developed. The program outputs the results to data.dat, as explained in [Making Compatible Programs](http://code.google.com/p/clusterlogo/wiki/MakingCompatiblePrograms).
+
+```
+to setup
+end
+    
+to go
+  file-open "data.dat"
+  file-type number
+  file-type ","
+  file-print fib number
+  file-close
+end
+
+to-report fib [num]
+  if num < 2 [
+      report num
+  ]
+      
+  report fib (num - 1) + fib (num - 2)
+end 
+```
+
+---
+To be continued...

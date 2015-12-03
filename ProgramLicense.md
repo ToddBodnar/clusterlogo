@@ -1,0 +1,1 @@
+Cluster Logo is released under the GNU General Public License which is available in the downloads tab and at http://www.gnu.org/licenses/gpl.html.
